@@ -5,7 +5,9 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
-import { join } from 'node:path';
+import helmet from 'helmet';
+import * as crypto from "node:crypto";
+import {join} from 'node:path';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -35,12 +37,57 @@ app.use(
   }),
 );
 
+
+/**
+ * Nonce
+ * */
+
+app.use((_req, res, next) => {
+  // Asynchronously generate a unique nonce for each request.
+  crypto.randomBytes(32, (err, randomBytes) => {
+    if (err) {
+      // If there was a problem, bail.
+      next(err);
+    } else {
+      // Save the nonce, as a hex string, to `res.locals` for later.
+      res.locals['nonce'] = randomBytes.toString('hex');
+      next();
+    }
+  });
+});
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          // Include this nonce in the `script-src` directive.
+          // @ts-ignore
+          (_req, res) => `'nonce-${res.locals['nonce']}'`,
+        ],
+      },
+    },
+    referrerPolicy: {
+      policy: 'strict-origin'
+    },
+    xContentTypeOptions: false,
+    xXssProtection: true,
+    xFrameOptions: {
+      action: 'deny'
+    }
+  }),
+);
+
 /**
  * Handle all other requests by rendering the Angular application.
  */
 app.use((req, res, next) => {
   angularApp
-    .handle(req)
+    .handle(req, {
+      'nonce': res.locals['nonce']
+    })
     .then((response) =>
       response ? writeResponseToNodeResponse(response, res) : next(),
     )

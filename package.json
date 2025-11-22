@@ -4,7 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "gcloud:switch": " gcloud config set project portfolio-388d7",
+    "build:hosting:static": "ng build",
+    "build:hosting:image": "gcloud builds submit --tag gcr.io/portfolio-388d7/web-site",
+    "deploy:hosting:image": "gcloud run deploy web-site --region=europe-west4 --image gcr.io/portfolio-388d7/web-site --platform managed",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs",
@@ -35,6 +38,7 @@
     "@angular/ssr": "^21.0.0",
     "express": "^5.1.0",
     "firebase": "^12.6.0",
+    "helmet": "^8.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -43,6 +47,7 @@
     "@angular/cli": "^21.0.0",
     "@angular/compiler-cli": "^21.0.0",
     "@types/express": "^5.0.1",
+    "@types/helmet": "^0.0.48",
     "@types/node": "^20.17.19",
     "firebase-tools": "^14.26.0",
     "jsdom": "^27.1.0",
