@@ -1,0 +1,67 @@
+@use '../../../styles/colors' as *;
+@use '../../../styles/layout' as *;
+
+.hero {
+
+  display: block;
+  max-width: 900px;
+  padding-inline: 24px;
+  margin: 130px auto 0;
+
+  &__title {
+
+    font-size: 2.25rem; // 36px
+    font-weight: 600;
+    margin: 0;
+
+    @include from-md {
+      font-size: 3rem; // 48px
+    }
+
+    @include from-lg {
+      font-size: 4rem; // 64px
+    }
+  }
+
+  &__sub-title {
+
+    margin: 0 0 10px;
+    font-weight: 500;
+
+    @include from-md {
+      font-size: 1.5rem; // 24px
+      margin: 0 0 14px;
+    }
+
+    @include from-lg {
+      font-size: 2rem; // 32px
+      margin: 0 0 10px;
+    }
+  }
+
+  &__description {
+
+    margin: 0;
+
+    color: $gold;
+    font-size: 0.875rem; // 14px
+    font-weight: 500;
+
+    @include from-md {
+      font-size: 1rem;
+    }
+
+    @include from-lg {
+      font-size: 1.25rem; // 20px
+    }
+  }
+
+  @include from-md {
+    padding-inline: 48px;
+    margin: 155px auto 0;
+  }
+
+  @include from-lg {
+    margin: 246px auto 0;
+  }
+}
