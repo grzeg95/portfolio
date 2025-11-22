@@ -1,0 +1,31 @@
+@use 'breakpoints' as *;
+
+@mixin from-sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin from-md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin from-lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin from-xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin from-xxl {
+  @media (min-width: $breakpoint-xxl) {
+    @content;
+  }
+}
