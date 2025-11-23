@@ -76,4 +76,17 @@ export class Cookies {
       security_storage: 'granted'
     });
   }
+
+  deleteAnalyticsCookies() {
+
+    const cookies = document.cookie.split(';');
+
+    const analyticsCookies = cookies
+      .map(c => c.split('=')[0].trim())
+      .filter(name => /^_ga|^_gid|^_gat/.test(name));
+
+    analyticsCookies.forEach((name) => {
+      this.delete(name);
+    });
+  }
 }
