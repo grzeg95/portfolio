@@ -39,23 +39,7 @@
     "ui": {
       "enabled": true
     },
-    "apphosting": {
-      "port": 5002,
-      "rootDirectory": "./",
-      "startCommand": "npm run dev"
-    },
     "singleProjectMode": true
-  },
-  "apphosting": {
-    "backendId": "portfolio",
-    "rootDir": "/",
-    "ignore": [
-      "node_modules",
-      ".git",
-      "firebase-debug.log",
-      "firebase-debug.*.log",
-      "functions"
-    ]
   },
   "storage": {
     "rules": "storage.rules"
