@@ -1,0 +1,12 @@
+<div class="cookie-consent-bottom-sheet">
+  <h4 class="cookie-consent-bottom-sheet__title">Cookie Notice</h4>
+  <p class="cookie-consent-bottom-sheet__description">
+    We use cookies to collect and analyse information on site performance and usage, and to help us improve your experience.
+  </p>
+  <div class="cookie-consent-bottom-sheet__actions">
+    <app-button class="cookie-consent-bottom-sheet__customize-button" appearance="stroked">Customise</app-button>
+    <app-button (click)="rejectAllCookies()" class="cookie-consent-bottom-sheet__reject-all-button" appearance="danger">Reject All</app-button>
+    <app-button (click)="acceptAllCookies()" class="cookie-consent-bottom-sheet__accept-all-button">Accept All</app-button>
+  </div>
+</div>
+
