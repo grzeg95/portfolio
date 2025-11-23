@@ -6,7 +6,7 @@
     "start": "ng serve",
     "gcloud:switch": " gcloud config set project portfolio-388d7",
     "build:hosting:static": "ng build",
-    "build:hosting:image": "gcloud builds submit --tag gcr.io/portfolio-388d7/web-site",
+    "build:hosting:image": "cd ./dist && gcloud builds submit --tag gcr.io/portfolio-388d7/web-site",
     "deploy:hosting:image": "gcloud run deploy web-site --region=europe-west4 --image gcr.io/portfolio-388d7/web-site --platform managed",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
