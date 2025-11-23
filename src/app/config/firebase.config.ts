@@ -1,6 +1,6 @@
 import {isPlatformBrowser} from '@angular/common';
 import {EnvironmentProviders, inject, makeEnvironmentProviders, PLATFORM_ID, Provider} from '@angular/core';
-import {getAnalytics, setConsent} from 'firebase/analytics';
+import {getAnalytics} from 'firebase/analytics';
 import {initializeApp} from 'firebase/app';
 import {initializeAppCheck, ReCaptchaEnterpriseProvider} from 'firebase/app-check';
 import {connectAuthEmulator, getAuth} from 'firebase/auth';
@@ -102,16 +102,6 @@ export function provideFirebase(): EnvironmentProviders {
         });
 
         // Analytics
-
-        setConsent({
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          analytics_storage: 'denied',
-          functionality_storage: 'granted',
-          personalization_storage: 'denied',
-          security_storage: 'granted'
-        });
 
         const analytics = getAnalytics(app);
 
