@@ -1,0 +1,54 @@
+@use '../../../styles/colors' as *;
+
+:host {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 15px;
+  border-radius: 18.5px;
+  border: solid 1px transparent;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  font-family: inherit;
+  background: transparent;
+
+  &.primary {
+
+    background-color: $bright-yellow;
+    color: $black;
+
+    &:hover {
+      background-color: $gold;
+    }
+  }
+
+  &.stroked {
+
+    border-color: $bright-yellow;
+    color: $bright-yellow;
+
+    &:hover {
+      border-color: $gold;
+      color: $gold;
+    }
+  }
+
+  &.danger {
+
+    background-color: $bright-red;
+    color: $light-gray;
+
+    &:hover {
+      background-color: $crimson;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.6;
+    cursor: auto;
+    pointer-events: none;
+  }
+}
