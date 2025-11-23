@@ -67,6 +67,15 @@ app.use(
           // @ts-ignore
           (_req, res) => `'nonce-${res.locals['nonce']}'`,
         ],
+        connectSrc: [
+          "https://firebase.googleapis.com/",
+          "https://firebaseinstallations.googleapis.com/v1/",
+          "https://*.google-analytics.com"
+        ],
+        'script-src-elem': [
+          "'self'",
+          "https://www.googletagmanager.com/gtag/"
+        ]
       },
     },
     referrerPolicy: {
