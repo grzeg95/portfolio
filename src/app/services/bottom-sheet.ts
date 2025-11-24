@@ -1,6 +1,6 @@
-import {Dialog, DialogRef} from '@angular/cdk/dialog';
+import {Dialog, DialogConfig, DialogRef} from '@angular/cdk/dialog';
 import {createGlobalPositionStrategy} from '@angular/cdk/overlay';
-import {ComponentType} from '@angular/cdk/portal';
+import {BasePortalOutlet, ComponentType} from '@angular/cdk/portal';
 import {inject, Injectable, Injector} from '@angular/core';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class BottomSheet {
   private readonly _dialog = inject(Dialog);
   private _dialogRef?: DialogRef<any, any>;
 
-  open<T>(component: ComponentType<T>) {
+  open<T>(component: ComponentType<T>, config?: DialogConfig<unknown, DialogRef<any, T>, BasePortalOutlet> | undefined) {
 
     if (typeof this._dialogRef?.componentRef?.instance.close === 'function') {
       this._dialogRef.componentRef.instance.close();
@@ -28,12 +28,7 @@ export class BottomSheet {
           .bottom('0'),
         autoFocus: false,
         hasBackdrop: false,
-        providers: (dialogRef, config, container) => {
-          return [{
-            provide: DialogRef,
-            useValue: dialogRef
-          }];
-        }
+        ...config
       }
     );
   }
