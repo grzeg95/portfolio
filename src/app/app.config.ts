@@ -35,13 +35,25 @@ export const appConfig: ApplicationConfig = {
       const cookies = inject(Cookies);
       const bottomSheet = inject(BottomSheet);
 
-      const cookieConsent = cookies.get('cookieConsent');
+      const cookieConsent = cookies.get('cookie-consent');
+      const cookieConsentAnalytics = cookies.get('cookie-consent-analytics');
 
-      if (cookieConsent !== 'true') {
+      // cookies wasn't set
+      // cookies are malformed
+      if (
+        cookieConsent !== 'true' ||
+        (cookieConsentAnalytics !== '' && cookieConsentAnalytics !== 'true' && cookieConsentAnalytics !== 'false')
+      ) {
         cookies.rejectAll();
         bottomSheet.open(CookieConsentBottomSheet, {
           disableClose: true
         });
+      }
+
+      if (cookieConsentAnalytics === 'true') {
+        cookies.setConsent({
+          analytics_storage: 'granted'
+        })
       }
     }),
     provideAppInitializer(() => {
@@ -139,7 +151,15 @@ export const appConfig: ApplicationConfig = {
 
         if (isPlatformBrowser(platformId)) {
 
-          cookies.rejectAll();
+          cookies.setConsent({
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+            functionality_storage: 'granted',
+            personalization_storage: 'granted',
+            security_storage: 'granted'
+          });
 
           return getAnalytics();
         }
