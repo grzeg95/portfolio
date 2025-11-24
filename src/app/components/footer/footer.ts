@@ -21,6 +21,8 @@ export class Footer {
     $event.preventDefault();
     $event.stopPropagation();
 
-    this._bottomSheet.open(CookieConsentBottomSheet);
+    this._bottomSheet.open(CookieConsentBottomSheet, {
+      disableClose: true
+    });
   }
 }
