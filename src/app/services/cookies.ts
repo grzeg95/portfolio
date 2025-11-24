@@ -1,5 +1,6 @@
 import {isPlatformServer} from '@angular/common';
 import {inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {ConsentSettings} from '@firebase/analytics';
 import {setConsent} from 'firebase/analytics';
 
 @Injectable({
@@ -54,27 +55,21 @@ export class Cookies {
   }
 
   rejectAll() {
-    setConsent({
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied',
-      functionality_storage: 'granted',
-      personalization_storage: 'denied',
-      security_storage: 'granted'
+
+    this.set('cookie-consent', 'true', {
+      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
     });
+
+    this.declineAnalyticsCookies();
   }
 
   acceptAll() {
-    setConsent({
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'granted',
-      functionality_storage: 'granted',
-      personalization_storage: 'denied',
-      security_storage: 'granted'
+
+    this.set('cookie-consent', 'true', {
+      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
     });
+
+    this.acceptAnalyticsCookies();
   }
 
   deleteAnalyticsCookies() {
@@ -88,5 +83,33 @@ export class Cookies {
     analyticsCookies.forEach((name) => {
       this.delete(name);
     });
+  }
+
+  acceptAnalyticsCookies() {
+
+    this.set('cookie-consent-analytics', 'true', {
+      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+    });
+
+    this.setConsent({
+      analytics_storage: 'granted'
+    });
+  }
+
+  declineAnalyticsCookies() {
+
+    this.set('cookie-consent-analytics', 'false', {
+      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+    });
+
+    this.setConsent({
+      analytics_storage: 'denied'
+    });
+
+    this.deleteAnalyticsCookies();
+  }
+
+  setConsent(consent: ConsentSettings) {
+    setConsent(consent);
   }
 }
