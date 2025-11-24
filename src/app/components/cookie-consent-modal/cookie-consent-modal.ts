@@ -59,11 +59,7 @@ export class CookieConsentModal implements OnInit {
   protected _rejectAllCookies() {
 
     this._cookies.rejectAll();
-
-    this._cookies.set('cookie-consent', 'true', {
-      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
-    });
-
+    this._cookies.turnOffAutoBottomSheet();
     this.close();
   }
 
@@ -81,6 +77,7 @@ export class CookieConsentModal implements OnInit {
       this._cookies.declineAnalyticsCookies();
     }
 
+    this._cookies.turnOffAutoBottomSheet();
     this.close();
   }
 

@@ -56,19 +56,13 @@ export class Cookies {
 
   rejectAll() {
 
-    this.set('cookie-consent', 'true', {
-      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
-    });
-
+    this.turnOffAutoBottomSheet();
     this.declineAnalyticsCookies();
   }
 
   acceptAll() {
 
-    this.set('cookie-consent', 'true', {
-      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
-    });
-
+    this.turnOffAutoBottomSheet()
     this.acceptAnalyticsCookies();
   }
 
@@ -111,5 +105,11 @@ export class Cookies {
 
   setConsent(consent: ConsentSettings) {
     setConsent(consent);
+  }
+
+  turnOffAutoBottomSheet() {
+    this.set('cookie-consent', 'true', {
+      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+    });
   }
 }
