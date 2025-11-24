@@ -48,17 +48,17 @@
     width: 100%;
 
     @include from-sm {
-      width: auto;
-      flex-grow: 1;
+      width: min-content;
+      flex: 1;
     }
   }
 
   &__customize-button {
-    flex-grow: 1;
+    flex: 1;
   }
 
   &__reject-all-button {
-    flex-grow: 1;
+    flex: 1;
   }
 }
 
