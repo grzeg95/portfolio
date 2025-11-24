@@ -44,7 +44,6 @@ export const appConfig: ApplicationConfig = {
         cookieConsent !== 'true' ||
         (cookieConsentAnalytics !== '' && cookieConsentAnalytics !== 'true' && cookieConsentAnalytics !== 'false')
       ) {
-        cookies.rejectAll();
         bottomSheet.open(CookieConsentBottomSheet, {
           disableClose: true
         });
