@@ -65,12 +65,12 @@
 @keyframes cookie-consent-bottom-sheet__enter {
 
   from {
-    scale: 0.95;
+    opacity: 0;
     transform: translateY(100%);
   }
 
   to {
-    scale: 1;
+    opacity: 1;
     transform: translateY(0);
   }
 }
@@ -78,12 +78,12 @@
 @keyframes cookie-consent-bottom-sheet__leave {
 
   from {
-    scale: 1;
+    opacity: 1;
     transform: translateY(0);
   }
 
   to {
-    scale: 0.95;
+    opacity: 0;
     transform: translateY(100%);
   }
 }
