@@ -30,7 +30,7 @@ export class CookieConsentBottomSheet implements OnInit {
     });
   }
 
-  rejectAllCookies() {
+  protected _rejectAllCookies() {
 
     this._cookies.rejectAll();
 
@@ -43,7 +43,7 @@ export class CookieConsentBottomSheet implements OnInit {
     this.close();
   }
 
-  acceptAllCookies() {
+  protected _acceptAllCookies() {
 
     this._cookies.acceptAll();
 
