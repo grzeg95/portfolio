@@ -47,7 +47,9 @@ export class CookieConsentBottomSheet implements OnInit {
   protected _openCookieConsentModal() {
 
     this._dialog.open(CookieConsentModal, {
-      disableClose: true
+      disableClose: true,
+      autoFocus: '__non_existing_element__',
+      restoreFocus: false
     });
 
     this.close();

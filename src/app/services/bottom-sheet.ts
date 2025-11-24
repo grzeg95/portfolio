@@ -26,7 +26,8 @@ export class BottomSheet {
         positionStrategy: createGlobalPositionStrategy(this._injector)
           .centerHorizontally()
           .bottom('0'),
-        autoFocus: false,
+        autoFocus: '__non_existing_element__',
+        restoreFocus: false,
         hasBackdrop: false,
         ...config
       }
