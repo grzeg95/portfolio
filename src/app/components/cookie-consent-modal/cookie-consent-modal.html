@@ -1,0 +1,27 @@
+<div class="cookie-consent-modal">
+  <h4 class="cookie-consent-modal__title">Cookie Notice</h4>
+  <p class="cookie-consent-modal__description">
+    We use cookies to collect and analyse information on site performance and usage, and to help us improve your experience.
+  </p>
+  <form (ngSubmit)="_onSubmit()" [formGroup]="_cookieConsentForm">
+    <div class="cookie-consent-modal__categories">
+      <app-slide-toggle formControlName="necessary">
+        <div class="cookie-consent-modal__category">
+          <div class="cookie-consent-modal__category-title">Necessary</div>
+          <div class="cookie-consent-modal__category-description">Necessary cookies are required to enable the basic features of this site, such as adjusting your consent preferences. These cookies do not store any personal identifiable data.</div>
+        </div>
+      </app-slide-toggle>
+      <app-slide-toggle formControlName="analytics">
+        <div class="cookie-consent-modal__category">
+          <div class="cookie-consent-modal__category-title">Analytics</div>
+          <div class="cookie-consent-modal__category-description">Analytics cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source.</div>
+        </div>
+      </app-slide-toggle>
+    </div>
+    <div class="cookie-consent-modal__actions">
+      <app-button (click)="_rejectAllCookies()" class="cookie-consent-modal__reject-all-button" appearance="danger">Reject All</app-button>
+      <app-button (click)="_acceptAllCookies()" class="cookie-consent-modal__accept-all-button">Accept All</app-button>
+      <app-button (click)="_acceptSelectedCookies()" class="cookie-consent-modal__accept-selected-button">Accept Selected</app-button>
+    </div>
+  </form>
+</div>
