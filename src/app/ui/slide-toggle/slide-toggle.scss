@@ -1,0 +1,77 @@
+@use '../../../styles/colors' as *;
+
+.slide-toggle {
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &__container {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    width: 40px;
+    flex-shrink: 0;
+  }
+
+  &__input {
+    display: block;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__input:checked + &__slider::before {
+    transform: translateX(20px);
+  }
+
+  &__input:checked + &__slider {
+    background: $bright-yellow;
+  }
+
+  &__input:focus-visible + &__slider::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    height: 100%;
+    padding: 1px;
+    border: solid 2px black;
+    width: 38px;
+  }
+
+  &__slider {
+
+    height: 100%;
+    width: 100%;
+    background: $medium-gray;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: 0.2s;
+    border-radius: 48px;
+
+    &::before {
+      background-color: $white;
+      bottom: 2px;
+      left: 2px;
+      content: "";
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      transition: 0.2s;
+      border-radius: 10px;
+    }
+  }
+
+  &__input[disabled] + &__slider {
+    opacity: 0.6;
+    cursor: initial;
+  }
+}
