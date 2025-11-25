@@ -9,6 +9,7 @@ import {
   REQUEST_CONTEXT
 } from '@angular/core';
 import {provideClientHydration, withEventReplay} from '@angular/platform-browser';
+import {provideRouter} from '@angular/router';
 import {getAnalytics} from 'firebase/analytics';
 import {initializeApp} from 'firebase/app';
 import {initializeAppCheck, ReCaptchaEnterpriseProvider} from 'firebase/app-check';
@@ -17,6 +18,7 @@ import {connectFirestoreEmulator, getFirestore} from 'firebase/firestore';
 import {connectFunctionsEmulator, getFunctions} from 'firebase/functions';
 import {connectStorageEmulator, getStorage} from 'firebase/storage';
 import {environment} from '../environments/environment';
+import {appRoutes} from './app.routes';
 import {CookieConsentBottomSheet} from './components/cookie-consent-bottom-sheet/cookie-consent-bottom-sheet';
 import {BottomSheet} from './services/bottom-sheet';
 import {Cookies} from './services/cookies';
@@ -26,6 +28,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideClientHydration(withEventReplay()),
+    provideRouter(appRoutes),
     provideAppInitializer(() => {
 
       const platformId = inject(PLATFORM_ID);
