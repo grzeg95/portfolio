@@ -22,3 +22,8 @@ a {
     text-decoration: underline;
   }
 }
+
+img:not([src]),
+img[src=''] {
+  visibility: hidden;
+}
