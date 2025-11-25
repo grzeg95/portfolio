@@ -1,0 +1,16 @@
+@for (event of timelineEvents(); track (event.title + event.start.toDate())) {
+  <div class="timeline__event">
+    <div class="timeline__event-title">
+      {{event.title}}{{event.subtitle ? ', ' : ''}}
+      @if (event.subtitle) {
+        <span class="timeline__event-subtitle">{{event.subtitle}}</span>
+      }
+    </div>
+    <div class="timeline__event-date">{{event.start.toDate() | date: 'MM.yyyy'}} - {{ event.end ? (event.end.toDate() | date: 'MM.yyyy') : 'now' }}</div>
+    <ul class="timeline__event-description">
+      @for (descriptionItem of event.description; track descriptionItem) {
+        <li class="timeline__event-description-item">{{descriptionItem}}</li>
+      }
+    </ul>
+  </div>
+}

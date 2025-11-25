@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Footer} from '../../components/footer/footer';
 import {Hero} from '../../components/hero/hero';
 import {Skills} from '../../components/skills/skills';
+import {Work} from '../../components/work/work';
 import {HomePageFirestore} from '../../models/home-page.firestore';
 
 @Component({
@@ -11,7 +12,8 @@ import {HomePageFirestore} from '../../models/home-page.firestore';
   imports: [
     Footer,
     Hero,
-    Skills
+    Skills,
+    Work
   ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',

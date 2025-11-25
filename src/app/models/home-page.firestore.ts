@@ -1,9 +1,11 @@
 import {doc, Firestore, FirestoreDataConverter } from 'firebase/firestore';
 import {Collections} from './collections';
 import {Skill} from './skill';
+import {TimelineEvent} from './timeline-event';
 
 export type HomePageFirestoreDoc = {
   skills: Skill[];
+  work: TimelineEvent[];
 }
 
 export type HomePageFirestore = {

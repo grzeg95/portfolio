@@ -1,0 +1,42 @@
+@use '../../../styles/colors' as *;
+@use '../../../styles/layout' as *;
+
+.work {
+
+  display: block;
+  max-width: 900px;
+  margin: 0 auto 32px;
+  padding-inline: 24px;
+
+  &__header {
+
+    display: inline-block;
+    font-size: 1.5rem; // 24px
+    font-weight: 600;
+    border-bottom: 2px solid $gold;
+    margin-bottom: 32px;
+
+    @include from-sm {
+      font-size: 2.25rem; // 36px
+    }
+
+    @include from-md {
+      font-size: 3rem; // 48px
+      margin-bottom: 48px;
+    }
+
+    @include from-lg {
+      font-size: 4rem; // 64px
+      margin-bottom: 64px;
+    }
+  }
+
+  @include from-md {
+    padding-inline: 48px;
+    margin: 0 auto 96px;
+  }
+
+  @include from-lg {
+    margin: 0 auto 128px;
+  }
+}
