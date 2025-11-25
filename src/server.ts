@@ -74,11 +74,21 @@ app.use(
         connectSrc: [
           "https://firebase.googleapis.com/",
           "https://firebaseinstallations.googleapis.com/v1/",
-          "https://*.google-analytics.com"
+          "https://*.google-analytics.com",
+          "https://firebaseremoteconfig.googleapis.com/",
+          "https://firestore.googleapis.com/",
+          "https://firebasestorage.googleapis.com",
+          !isProduction() ? "http://127.0.0.1:8080/" : "",
+          !isProduction() ? "http://127.0.0.1:9199/" : ""
         ],
         'script-src-elem': [
           "'self'",
           "https://www.googletagmanager.com/gtag/"
+        ],
+        'img-src': [
+          "'self'",
+          "https://firebasestorage.googleapis.com/",
+          !isProduction() ? "http://127.0.0.1:9199" : ""
         ]
       },
     },
