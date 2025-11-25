@@ -92,12 +92,10 @@ export const appConfig: ApplicationConfig = {
 
         const provider = new ReCaptchaEnterpriseProvider(environment.recaptchaEnterprise);
 
-        const appCheck = initializeAppCheck(undefined, {
+        return initializeAppCheck(undefined, {
           provider,
           isTokenAutoRefreshEnabled: true
         });
-
-        return appCheck;
       }
     },
     {
