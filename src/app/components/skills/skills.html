@@ -1,0 +1,15 @@
+<h2 class="skills__header">Skills</h2>
+
+<div class="skills__list">
+  @for (skill of skills(); track skill.name) {
+    <div class="skills__item">
+      <div class="skills__item-image-wrapper">
+        <img
+          class="skills__item-image"
+          [alt]="skill.name"
+          [appFirebaseStorageSrc]="skill.storagePathImage"
+          src="">
+      </div>
+    </div>
+  }
+</div>

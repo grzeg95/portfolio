@@ -1,0 +1,88 @@
+@use '../../../styles/colors' as *;
+@use '../../../styles/layout' as *;
+
+.skills {
+
+  display: block;
+  max-width: 900px;
+  margin: 0 auto 32px;
+  padding-inline: 24px;
+
+  &__header {
+
+    display: inline-block;
+    font-size: 1.5rem; // 24px
+    font-weight: 600;
+    border-bottom: 2px solid $gold;
+    margin-bottom: 32px;
+
+    @include from-sm {
+      font-size: 2.25rem; // 36px
+    }
+
+    @include from-md {
+      font-size: 3rem; // 48px
+      margin-bottom: 48px;
+    }
+
+    @include from-lg {
+      font-size: 4rem; // 64px
+      margin-bottom: 64px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__item {}
+
+  &__item-image-wrapper {
+
+    width: 50px;
+    height: 50px;
+
+    @include from-md {
+      width: 65px;
+      height: 65px;
+    }
+
+    @include from-md {
+      width: 75px;
+      height: 75px;
+    }
+  }
+
+  &__item-image {
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    &.firebase-storage-src--loading {
+
+      width: 100%;
+      height: 100%;
+      background: $gold;
+      animation: pulse 1.2s infinite ease-in-out;
+      border-radius: 6px;
+
+      @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: .4; }
+        100% { opacity: 1; }
+      }
+    }
+  }
+
+  @include from-md {
+    padding-inline: 48px;
+    margin: 0 auto 96px;
+  }
+
+  @include from-lg {
+    margin: 0 auto 128px;
+  }
+}
