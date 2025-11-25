@@ -104,25 +104,24 @@ export const appConfig: ApplicationConfig = {
       provide: Firestore,
       useFactory: () => {
 
-        const platformId = inject(PLATFORM_ID);
-
         const firestore = getFirestore();
 
-        if (!environment.production && isPlatformBrowser(platformId)) {
+        if (!environment.production) {
           connectFirestoreEmulator(firestore, environment.emulators.firestore.host, environment.emulators.firestore.port);
         }
+
+        return firestore;
       }
     },
     {
       provide: Functions,
       useFactory: () => {
 
-        const platformId = inject(PLATFORM_ID);
         const firebaseApp = inject(FirebaseApp);
 
         const functions = getFunctions(firebaseApp, 'europe-central2');
 
-        if (!environment.production && isPlatformBrowser(platformId)) {
+        if (!environment.production) {
           connectFunctionsEmulator(functions, environment.emulators.functions.host, environment.emulators.functions.port);
         }
 
@@ -133,11 +132,9 @@ export const appConfig: ApplicationConfig = {
       provide: FirebaseStorage,
       useFactory: () => {
 
-        const platformId = inject(PLATFORM_ID);
-
         const storage = getStorage();
 
-        if (!environment.production && isPlatformBrowser(platformId)) {
+        if (!environment.production) {
           connectStorageEmulator(storage, environment.emulators.storage.host, environment.emulators.storage.port);
         }
 
