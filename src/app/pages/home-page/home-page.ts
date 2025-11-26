@@ -6,6 +6,7 @@ import {Footer} from '../../components/footer/footer';
 import {Hero} from '../../components/hero/hero';
 import {Skills} from '../../components/skills/skills';
 import {Work} from '../../components/work/work';
+import {EnterOnViewport} from '../../directives/enter-on-viewport';
 import {HomePageFirestore} from '../../models/home-page.firestore';
 
 @Component({
@@ -15,7 +16,8 @@ import {HomePageFirestore} from '../../models/home-page.firestore';
     Hero,
     Skills,
     Work,
-    Education
+    Education,
+    EnterOnViewport
   ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',

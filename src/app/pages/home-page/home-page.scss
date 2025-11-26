@@ -8,6 +8,7 @@
   padding-inline: 24px;
   gap: 32px;
   margin: 0 auto;
+  overflow-x: hidden;
 
   @include from-md {
     padding-inline: 48px;
@@ -17,4 +18,26 @@
   @include from-lg {
     gap: 128px;
   }
+}
+
+.app-hero-start {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.333s ease-in-out, transform 0.333s ease-in-out;
+}
+
+.app-hero-finish {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-up-start {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.333s ease-in-out, transform 0.333s ease-in-out;
+}
+
+.fade-in-up-finish {
+  opacity: 1;
+  transform: translateY(0);
 }

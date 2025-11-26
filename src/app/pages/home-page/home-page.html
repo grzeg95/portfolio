@@ -1,5 +1,37 @@
-<app-hero/>
-<app-skills [skills]="_homePage().skills"/>
-<app-work [work]="_homePage().work"/>
-<app-education [education]="_homePage().education"/>
-<app-footer/>
+<app-hero
+  appEnterOnViewport
+  startClass="app-hero-start"
+  finishClass="app-hero-finish"
+  rootMargin="0px 0px"
+/>
+
+<app-skills
+  appEnterOnViewport
+  startClass="fade-in-up-start"
+  finishClass="fade-in-up-finish"
+  rootMargin="-100px 0px"
+  [skills]="_homePage().skills"
+/>
+
+<app-work
+  appEnterOnViewport
+  startClass="fade-in-up-start"
+  finishClass="fade-in-up-finish"
+  rootMargin="-100px 0px"
+  [work]="_homePage().work"
+/>
+
+<app-education
+  appEnterOnViewport
+  startClass="fade-in-up-start"
+  finishClass="fade-in-up-finish"
+  rootMargin="-100px 0px"
+  [education]="_homePage().education"
+/>
+
+<app-footer
+  appEnterOnViewport
+  startClass="fade-in-up-start"
+  finishClass="fade-in-up-finish"
+  rootMargin="0px 0px"
+/>
