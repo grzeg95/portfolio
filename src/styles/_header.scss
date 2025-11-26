@@ -1,0 +1,26 @@
+@use './colors' as *;
+@use './layout' as *;
+
+@mixin header {
+
+  display: inline-block;
+  font-size: 1.5rem; // 24px
+  font-weight: 600;
+  border-bottom: 2px solid $gold;
+  margin-bottom: 32px;
+  margin-top: 0;
+
+  @include from-sm {
+    font-size: 2.25rem; // 36px
+  }
+
+  @include from-md {
+    font-size: 3rem; // 48px
+    margin-bottom: 48px;
+  }
+
+  @include from-lg {
+    font-size: 4rem; // 64px
+    margin-bottom: 64px;
+  }
+}
