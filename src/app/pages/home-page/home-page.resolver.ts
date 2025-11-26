@@ -8,5 +8,9 @@ export const homePageResolver = () => {
   const firestore = inject(Firestore);
 
   const homePageRef = getHomePageRef(firestore);
-  return getDoc(homePageRef).then(async (doc) => doc.data());
+  return getDoc(homePageRef).then((doc) => doc.data() || {
+    skills: [],
+    experiences: [],
+    education: []
+  });
 };
