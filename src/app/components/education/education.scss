@@ -1,0 +1,10 @@
+@use '../../../styles/header' as *;
+
+.education {
+
+  display: block;
+
+  &__header {
+    @include header();
+  }
+}

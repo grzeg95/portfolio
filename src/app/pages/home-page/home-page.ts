@@ -1,6 +1,7 @@
 import {Component, computed, inject, ViewEncapsulation} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ActivatedRoute} from '@angular/router';
+import {Education} from '../../components/education/education';
 import {Footer} from '../../components/footer/footer';
 import {Hero} from '../../components/hero/hero';
 import {Skills} from '../../components/skills/skills';
@@ -13,7 +14,8 @@ import {HomePageFirestore} from '../../models/home-page.firestore';
     Footer,
     Hero,
     Skills,
-    Work
+    Work,
+    Education
   ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
