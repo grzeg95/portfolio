@@ -14,7 +14,8 @@ export type HomePageFirestore = {
 
 const converter = {
   toFirestore: (homePage) => ({
-    skills: homePage?.skills
+    skills: homePage?.skills,
+    work: homePage?.work
   }),
   fromFirestore: (snapshot) => ({
     id: snapshot.id,
