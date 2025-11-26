@@ -5,7 +5,7 @@ import {TimelineEvent} from './timeline-event';
 
 export type HomePageFirestoreDoc = {
   skills: Skill[];
-  work: TimelineEvent[];
+  experience: TimelineEvent[];
   education: TimelineEvent[];
 }
 
@@ -16,7 +16,7 @@ export type HomePageFirestore = {
 const converter = {
   toFirestore: (homePage) => ({
     skills: homePage?.skills,
-    work: homePage?.work,
+    experience: homePage?.experience,
     education: homePage?.education
   }),
   fromFirestore: (snapshot) => ({

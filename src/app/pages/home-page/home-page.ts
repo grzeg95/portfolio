@@ -5,7 +5,7 @@ import {Education} from '../../components/education/education';
 import {Footer} from '../../components/footer/footer';
 import {Hero} from '../../components/hero/hero';
 import {Skills} from '../../components/skills/skills';
-import {Work} from '../../components/work/work';
+import {Experience} from '../../components/experience/experience';
 import {EnterOnViewport} from '../../directives/enter-on-viewport';
 import {HomePageFirestore} from '../../models/home-page.firestore';
 
@@ -15,7 +15,7 @@ import {HomePageFirestore} from '../../models/home-page.firestore';
     Footer,
     Hero,
     Skills,
-    Work,
+    Experience,
     Education,
     EnterOnViewport
   ],

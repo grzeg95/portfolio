@@ -3,18 +3,18 @@ import {TimelineEvent} from '../../models/timeline-event';
 import {Timeline} from '../timeline/timeline';
 
 @Component({
-  selector: 'app-work',
+  selector: 'app-experience',
   imports: [
     Timeline
   ],
-  templateUrl: './work.html',
-  styleUrl: './work.scss',
+  templateUrl: './experience.html',
+  styleUrl: './experience.scss',
   encapsulation: ViewEncapsulation.None,
   host: {
-    'class': 'work'
+    'class': 'experience'
   }
 })
-export class Work {
+export class Experience {
 
-  work = input.required<TimelineEvent[]>();
+  experience = input.required<TimelineEvent[]>();
 }
