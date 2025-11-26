@@ -1,0 +1,20 @@
+@use '../../../styles/layout' as *;
+
+.home-page {
+
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  padding-inline: 24px;
+  gap: 32px;
+  margin: 0 auto;
+
+  @include from-md {
+    padding-inline: 48px;
+    gap: 96px;
+  }
+
+  @include from-lg {
+    gap: 128px;
+  }
+}

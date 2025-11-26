@@ -4,9 +4,7 @@
 .hero {
 
   display: block;
-  max-width: 900px;
-  padding-inline: 24px;
-  margin: 130px auto 32px;
+  margin-top: 130px;
 
   &__title {
 
@@ -57,11 +55,10 @@
   }
 
   @include from-md {
-    padding-inline: 48px;
-    margin: 155px auto 96px;
+    margin-top: 155px;
   }
 
   @include from-lg {
-    margin: 246px auto 128px;
+    margin-top: 246px;
   }
 }

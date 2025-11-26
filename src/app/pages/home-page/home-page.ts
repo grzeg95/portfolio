@@ -1,4 +1,4 @@
-import {Component, computed, inject} from '@angular/core';
+import {Component, computed, inject, ViewEncapsulation} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ActivatedRoute} from '@angular/router';
 import {Footer} from '../../components/footer/footer';
@@ -17,6 +17,10 @@ import {HomePageFirestore} from '../../models/home-page.firestore';
   ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    'class': 'home-page'
+  }
 })
 export class HomePage {
   private readonly _activatedRoute = inject(ActivatedRoute);

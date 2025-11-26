@@ -4,9 +4,6 @@
 .work {
 
   display: block;
-  max-width: 900px;
-  margin: 0 auto 32px;
-  padding-inline: 24px;
 
   &__header {
 
@@ -29,14 +26,5 @@
       font-size: 4rem; // 64px
       margin-bottom: 64px;
     }
-  }
-
-  @include from-md {
-    padding-inline: 48px;
-    margin: 0 auto 96px;
-  }
-
-  @include from-lg {
-    margin: 0 auto 128px;
   }
 }
