@@ -1,2 +1,18 @@
 <h2 class="experience__header">Experience</h2>
-<app-timeline [timelineEvents]="experience()"/>
+
+<app-loader key="experience">
+  <app-loader-defer [when]="!experienceFirestoreLoading()">
+    @if (!experienceFirestore() || (experienceFirestore()!.timelineEvents || []).length === 0) {
+      <div class="experience__404">
+        <p>Experience timeline events not found 404</p>
+      </div>
+    } @else {
+      <app-timeline [timelineEvents]="experienceFirestore()?.timelineEvents!"/>
+    }
+  </app-loader-defer>
+  <app-loader-loading [after]="0" [minimum]="500">
+    <div class="experience__skeleton"></div>
+    <div class="experience__skeleton"></div>
+    <div class="experience__skeleton"></div>
+  </app-loader-loading>
+</app-loader>

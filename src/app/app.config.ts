@@ -90,9 +90,14 @@ export const appConfig: ApplicationConfig = {
       provide: AppCheck,
       useFactory: () => {
 
+        const platformId = inject(PLATFORM_ID);
+
+        if (isPlatformServer(platformId)) return null;
+
+        const firebaseApp = inject(FirebaseApp);
         const provider = new ReCaptchaEnterpriseProvider(environment.recaptchaEnterprise);
 
-        return initializeAppCheck(undefined, {
+        return initializeAppCheck(firebaseApp, {
           provider,
           isTokenAutoRefreshEnabled: true
         });

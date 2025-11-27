@@ -1,15 +1,29 @@
 <h2 class="skills__header">Skills</h2>
-
-<div class="skills__list">
-  @for (skill of skills(); track skill.name) {
-    <div class="skills__item">
-      <div class="skills__item-image-wrapper">
-        <img
-          class="skills__item-image"
-          [alt]="skill.name"
-          [appFirebaseStorageSrc]="skill.storagePathImage"
-          src="">
+  <app-loader key="skills">
+    <app-loader-defer [when]="!skillsFirestoreLoading()">
+      <div class="skills__list">
+        @for (skill of skillsFirestore()?.skills; track skill.name) {
+          <div class="skills__item">
+            <div class="skills__item-image-wrapper">
+              <img
+                class="skills__item-image"
+                [alt]="skill.name"
+                [appFirebaseStorageSrc]="skill.storageRefImage"
+                src="">
+            </div>
+          </div>
+        }
       </div>
-    </div>
-  }
-</div>
+      @if ((skillsFirestore()?.skills || []).length === 0) {
+        <div class="skills__404">
+          <p>Skills not found 404</p>
+        </div>
+      }
+    </app-loader-defer>
+    <app-loader-loading [after]="0" [minimum]="500">
+      <div class="skills__skeleton"></div>
+      <div class="skills__skeleton"></div>
+      <div class="skills__skeleton"></div>
+    </app-loader-loading>
+  </app-loader>
+

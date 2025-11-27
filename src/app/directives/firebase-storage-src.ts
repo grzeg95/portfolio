@@ -1,8 +1,6 @@
 import {Directive, ElementRef, inject, input, OnInit, signal} from '@angular/core';
 import {getDownloadURL, ref} from 'firebase/storage';
-import {environment} from '../../environments/environment';
 import {FirebaseStorage} from '../tokens/firebase.tokens';
-import {getPublicDownloadUrlMedia} from '../utils/get-public-download-url-media';
 
 @Directive({
   selector: '[appFirebaseStorageSrc]',
@@ -23,14 +21,9 @@ export class FirebaseStorageSrc implements OnInit {
 
     const skillImgRef = ref(this._storage, this.appFirebaseStorageSrc());
 
-    if (this.private() || !environment.production) {
-      getDownloadURL(skillImgRef).then((url) => {
-        this._elementRef.nativeElement.src = url;
-        this._isLoading.set(false);
-      });
-    } else {
-      this._elementRef.nativeElement.src = getPublicDownloadUrlMedia(this._storage, this.appFirebaseStorageSrc());
+    getDownloadURL(skillImgRef).then((url) => {
+      this._elementRef.nativeElement.src = url;
       this._isLoading.set(false);
-    }
+    });
   }
 }

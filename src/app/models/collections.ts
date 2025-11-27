@@ -1,3 +1,4 @@
 export enum Collections {
-  'pages' = 'pages'
+  'pages' = 'pages',
+  'sections' = 'sections'
 }

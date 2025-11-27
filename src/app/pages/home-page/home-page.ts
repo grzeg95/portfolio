@@ -1,13 +1,11 @@
-import {Component, computed, inject, ViewEncapsulation} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {ActivatedRoute} from '@angular/router';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
 import {Education} from '../../components/education/education';
+import {Experience} from '../../components/experience/experience';
 import {Footer} from '../../components/footer/footer';
 import {Hero} from '../../components/hero/hero';
 import {Skills} from '../../components/skills/skills';
-import {Experience} from '../../components/experience/experience';
 import {EnterOnViewport} from '../../directives/enter-on-viewport';
-import {HomePageFirestore} from '../../models/home-page.firestore';
+import {AppCheck} from '../../tokens/firebase.tokens';
 
 @Component({
   selector: 'app-home-page',
@@ -27,7 +25,5 @@ import {HomePageFirestore} from '../../models/home-page.firestore';
   }
 })
 export class HomePage {
-  private readonly _activatedRoute = inject(ActivatedRoute);
-  private readonly data = toSignal(this._activatedRoute.data);
-  protected _homePage = computed(() => this.data()?.['homePage'] as HomePageFirestore);
+  private readonly _appCheck = inject(AppCheck); // initialize AppCheck
 }

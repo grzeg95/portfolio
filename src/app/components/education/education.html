@@ -1,2 +1,18 @@
 <h2 class="education__header">Education</h2>
-<app-timeline [timelineEvents]="education()"/>
+
+<app-loader key="education">
+  <app-loader-defer [when]="!educationFirestoreLoading()">
+    @if (!educationFirestore() || (educationFirestore()!.timelineEvents || []).length === 0) {
+      <div class="education__404">
+        <p>Education timeline events not found 404</p>
+      </div>
+    } @else {
+      <app-timeline [timelineEvents]="educationFirestore()?.timelineEvents!"/>
+    }
+  </app-loader-defer>
+  <app-loader-loading [after]="0" [minimum]="500">
+    <div class="education__skeleton"></div>
+    <div class="education__skeleton"></div>
+    <div class="education__skeleton"></div>
+  </app-loader-loading>
+</app-loader>

@@ -2,7 +2,7 @@ rules_version='2'
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /pages/homePage {
+    match /pages/home/sections/{sectionId} {
       allow read: if true;
     }
   }

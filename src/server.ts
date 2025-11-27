@@ -78,17 +78,25 @@ app.use(
           "https://firebaseremoteconfig.googleapis.com/",
           "https://firestore.googleapis.com/",
           "https://firebasestorage.googleapis.com",
+          "https://content-firebaseappcheck.googleapis.com/",
+          "https://www.google.com/recaptcha/enterprise/",
           !isProduction() ? "http://127.0.0.1:8080/" : "",
           !isProduction() ? "http://127.0.0.1:9199/" : ""
         ],
         'script-src-elem': [
           "'self'",
-          "https://www.googletagmanager.com/gtag/"
+          "https://www.googletagmanager.com/gtag/",
+          "https://www.google.com/recaptcha/",
+          "https://www.gstatic.com/recaptcha/"
         ],
         'img-src': [
           "'self'",
           "https://firebasestorage.googleapis.com/",
           !isProduction() ? "http://127.0.0.1:9199" : ""
+        ],
+        'frame-src': [
+          "'self'",
+          "https://www.google.com/"
         ]
       },
     },
