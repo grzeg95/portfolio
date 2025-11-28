@@ -4,11 +4,12 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
+import * as cheerio from 'cheerio';
 import express from 'express';
 import helmet from 'helmet';
 import * as crypto from "node:crypto";
 import {join} from 'node:path';
-import {Readable} from 'node:stream';
+import {text} from 'node:stream/consumers';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -86,6 +87,9 @@ app.use(
         ],
         'script-src-elem': [
           "'self'",
+          // Include this nonce in the `script-src` directive.
+          // @ts-ignore
+          (_req, res) => `'nonce-${res.locals['nonce']}'`,
           "https://www.googletagmanager.com/gtag/",
           "https://www.google.com/recaptcha/",
           "https://www.gstatic.com/recaptcha/"
@@ -126,10 +130,23 @@ app.use((req, res, next) => {
     .handle(req, {
       'nonce': res.locals['nonce']
     })
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
-    .catch(next);
+    .then(async (response) => {
+
+      if (!response) {
+        return next();
+      }
+
+      const bodyText = await text(response.body!);
+
+      const $ = cheerio.load(bodyText);
+      const script = $('script:not([src]):not([nonce]):not([type="application/json"])');
+      script.attr('nonce', res.locals['nonce']);
+
+      const bodyTextUpdatedWithNonce = $.html();
+      const newResponse = new Response(bodyTextUpdatedWithNonce, response);
+
+      return writeResponseToNodeResponse(newResponse, res);
+    }).catch(next);
 });
 
 /**
