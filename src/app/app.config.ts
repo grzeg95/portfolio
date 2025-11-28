@@ -2,11 +2,11 @@ import {isPlatformBrowser, isPlatformServer} from '@angular/common';
 import {
   ApplicationConfig,
   CSP_NONCE,
-  inject,
+  inject, makeStateKey,
   PLATFORM_ID,
   provideAppInitializer,
   provideBrowserGlobalErrorListeners,
-  REQUEST_CONTEXT
+  REQUEST_CONTEXT, TransferState
 } from '@angular/core';
 import {provideClientHydration, withEventReplay} from '@angular/platform-browser';
 import {provideRouter} from '@angular/router';
@@ -23,6 +23,8 @@ import {CookieConsentBottomSheet} from './components/cookie-consent-bottom-sheet
 import {BottomSheet} from './services/bottom-sheet';
 import {Cookies} from './services/cookies';
 import {Analytics, AppCheck, Auth, FirebaseApp, FirebaseStorage, Firestore, Functions} from './tokens/firebase.tokens';
+
+const nonce = makeStateKey<string>('nonce');
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -175,12 +177,14 @@ export const appConfig: ApplicationConfig = {
 
         const platformId = inject(PLATFORM_ID);
         const reqContext = inject(REQUEST_CONTEXT) as {nonce: string};
+        const transferState = inject(TransferState);
 
         if (isPlatformServer(platformId) && reqContext) {
+          transferState.set(nonce, reqContext.nonce);
           return reqContext.nonce;
         }
 
-        return null;
+        return transferState.get(nonce, '');
       }
     }
   ]

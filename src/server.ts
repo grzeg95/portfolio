@@ -8,6 +8,7 @@ import express from 'express';
 import helmet from 'helmet';
 import * as crypto from "node:crypto";
 import {join} from 'node:path';
+import {Readable} from 'node:stream';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -97,6 +98,12 @@ app.use(
         'frame-src': [
           "'self'",
           "https://www.google.com/"
+        ],
+        'style-src': [
+          "'self'",
+          // Include this nonce in the `script-src` directive.
+          // @ts-ignore
+          (_req, res) => `'nonce-${res.locals['nonce']}'`,
         ]
       },
     },
