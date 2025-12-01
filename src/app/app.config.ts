@@ -82,7 +82,7 @@ export const appConfig: ApplicationConfig = {
         const auth = getAuth();
 
         if (!environment.production && isPlatformBrowser(platformId)) {
-          connectAuthEmulator(auth, `${environment.emulators.auth.protocol}://${environment.emulators.auth.host}:${environment.emulators.auth.port}`);
+          // connectAuthEmulator(auth, `${environment.emulators.auth.protocol}://${environment.emulators.auth.host}:${environment.emulators.auth.port}`);
         }
 
         return auth;
@@ -112,7 +112,7 @@ export const appConfig: ApplicationConfig = {
         const firestore = getFirestore();
 
         if (!environment.production) {
-          connectFirestoreEmulator(firestore, environment.emulators.firestore.host, environment.emulators.firestore.port);
+          // connectFirestoreEmulator(firestore, environment.emulators.firestore.host, environment.emulators.firestore.port);
         }
 
         return firestore;
@@ -127,7 +127,7 @@ export const appConfig: ApplicationConfig = {
         const functions = getFunctions(firebaseApp, 'europe-central2');
 
         if (!environment.production) {
-          connectFunctionsEmulator(functions, environment.emulators.functions.host, environment.emulators.functions.port);
+          // connectFunctionsEmulator(functions, environment.emulators.functions.host, environment.emulators.functions.port);
         }
 
         return functions;
@@ -140,7 +140,7 @@ export const appConfig: ApplicationConfig = {
         const storage = getStorage();
 
         if (!environment.production) {
-          connectStorageEmulator(storage, environment.emulators.storage.host, environment.emulators.storage.port);
+          // connectStorageEmulator(storage, environment.emulators.storage.host, environment.emulators.storage.port);
         }
 
         return storage;

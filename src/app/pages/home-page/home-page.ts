@@ -3,6 +3,7 @@ import {Education} from '../../components/education/education';
 import {Experience} from '../../components/experience/experience';
 import {Footer} from '../../components/footer/footer';
 import {Hero} from '../../components/hero/hero';
+import {Projects} from '../../components/projects/projects';
 import {Skills} from '../../components/skills/skills';
 import {EnterOnViewport} from '../../directives/enter-on-viewport';
 import {AppCheck} from '../../tokens/firebase.tokens';
@@ -15,7 +16,8 @@ import {AppCheck} from '../../tokens/firebase.tokens';
     Skills,
     Experience,
     Education,
-    EnterOnViewport
+    EnterOnViewport,
+    Projects
   ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',

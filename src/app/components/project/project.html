@@ -1,0 +1,11 @@
+<div class="project__swiper">
+  <app-flipper
+    [infinite]="true"
+    [slidesPerView]="2"
+    [spaceBetween]="20"
+  >
+    @for (image of project().images; track image) {
+      <app-flipper-slide><img class="project__swiper-image" [appFirebaseStorageSrc]="image"></app-flipper-slide>
+    }
+  </app-flipper>
+</div>

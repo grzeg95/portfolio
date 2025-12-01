@@ -1,0 +1,11 @@
+.flipper {
+
+  &__wrapper {
+    display: flex;
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+  }
+}

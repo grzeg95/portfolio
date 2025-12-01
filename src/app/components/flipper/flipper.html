@@ -1,0 +1,15 @@
+<div
+  class="flipper__wrapper"
+  #wrapper
+  (mousedown)="_onDragStart($event)"
+  (touchstart)="_onDragStart($event)"
+>
+  <div
+    class="flipper__track"
+    #track
+
+  >
+    <ng-content select="app-flipper-slide"/>
+  </div>
+</div>
+

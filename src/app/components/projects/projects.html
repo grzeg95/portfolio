@@ -1,0 +1,26 @@
+<h2 class="projects__header">Projects</h2>
+
+<app-loader key="skills">
+  <app-loader-defer [when]="!_projectsFirestoreFirstLoading()">
+    <div class="skills__projects">
+      @for (project of _projectFirestoreList(); track project.id) {
+        <app-project [project]="project"/>
+      }
+    </div>
+    @if (_isPossibilityToShowNextPage()) {
+      <div class="projects__actions">
+        <app-button (click)="_checkForMore()">Check for more</app-button>
+      </div>
+    }
+    @if ((_projectFirestoreList() || []).length === 0) {
+      <div class="projects__404">
+        <p>Projects not found 404</p>
+      </div>
+    }
+  </app-loader-defer>
+  <app-loader-loading [after]="0" [minimum]="500">
+    <div class="projects__skeleton"></div>
+    <div class="projects__skeleton"></div>
+    <div class="projects__skeleton"></div>
+  </app-loader-loading>
+</app-loader>
